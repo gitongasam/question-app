@@ -9,7 +9,7 @@ function App() {
     <Router>
       <div className="App">
         <header className="App-header">
-          <p>Christian church</p>
+          <p>Christian church International Malabah</p>
         </header>
         <Routes>
           <Route path="/" exact element={<QuestionForm />} />

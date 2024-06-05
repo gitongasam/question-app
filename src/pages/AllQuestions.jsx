@@ -13,7 +13,7 @@ function AllQuestions() {
     // Fetch all questions from the backend when the component mounts
     const fetchQuestions = async () => {
       try {
-        const response = await fetch('http://myapp-env.eba-ub9uw39e.eu-north-1.elasticbeanstalk.com/all');
+        const response = await fetch('https://quiz-apppl.onrender.com//all');
         const data = await response.json();
         setQuestions(data);
         setIsLoading(false);
@@ -27,7 +27,7 @@ function AllQuestions() {
 
   const fetchComments = async (quizId) => {
     try {
-      const response = await fetch(`http://myapp-env.eba-ub9uw39e.eu-north-1.elasticbeanstalk.com/quiz/${quizId}/comments`);
+      const response = await fetch(`https://quiz-apppl.onrender.com/quiz/${quizId}/comments`);
       const data = await response.json();
       return data;
     } catch (error) {
@@ -52,7 +52,7 @@ function AllQuestions() {
   const handleAddComment = async () => {
     // Add a new comment to the selected question
     try {
-      const response = await fetch(`http://myapp-env.eba-ub9uw39e.eu-north-1.elasticbeanstalk.com/quiz/${selectedQuestion.id}/comment/save`, {
+      const response = await fetch(`https://quiz-apppl.onrender.com/quiz/${selectedQuestion.id}/comment/save`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

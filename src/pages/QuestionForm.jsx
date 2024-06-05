@@ -9,7 +9,7 @@ function QuestionForm() {
     e.preventDefault();
 
     try {
-      await fetch('http://myapp-env.eba-ub9uw39e.eu-north-1.elasticbeanstalk.com/save', {
+      await fetch('https://quiz-apppl.onrender.com/save', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

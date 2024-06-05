@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './AllQuestions.css'; // Import the CSS file
 
 function AllQuestions() {
@@ -6,6 +7,7 @@ function AllQuestions() {
   const [selectedQuestion, setSelectedQuestion] = useState(null);
   const [newComment, setNewComment] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Fetch all questions from the backend when the component mounts
@@ -67,26 +69,27 @@ function AllQuestions() {
     }
   };
 
-  const handleAddQuestion = async () => {
-    try {
-      const response = await fetch(`http://myapp-env.eba-ub9uw39e.eu-north-1.elasticbeanstalk.com/save`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ quiz: 'New Question' }), // Replace 'New Question' with the actual question content
-      });
-      const newQuestion = await response.json();
-      setQuestions([...questions, newQuestion]); // Append the new question to the end of the questions array
-    } catch (error) {
-      console.error('Error adding question:', error);
-    }
+  const handleAddQuestion = () => {
+    navigate('/'); // Redirect to the question form page
   };
 
   return (
     <div className="questions-wrapper" style={{ border: '1px solid #ccc', borderRadius: '5px', padding: '20px' }}>
       <h2>All Questions</h2>
-      <button onClick={handleAddQuestion}>Add Question</button>
+      <button
+        onClick={handleAddQuestion}
+        style={{
+          padding: '10px 20px',
+          backgroundColor: '#007bff',
+          color: '#fff',
+          border: 'none',
+          borderRadius: '5px',
+          cursor: 'pointer',
+          marginBottom: '20px'
+        }}
+      >
+        Add Question
+      </button>
       <div className="questions-container">
         <div className="questions-list">
           {isLoading ? (

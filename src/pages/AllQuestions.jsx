@@ -13,7 +13,7 @@ function AllQuestions() {
     // Fetch all questions from the backend when the component mounts
     const fetchQuestions = async () => {
       try {
-        const response = await fetch('https://quiz-apppl.onrender.com//all');
+        const response = await fetch('https://quiz-apppl.onrender.com/all');
         const data = await response.json();
         setQuestions(data);
         setIsLoading(false);
